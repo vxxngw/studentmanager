@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Manager</title>
+</head>
+<body>
+
+<h2>Student List</h2>
+
+<form th:action="@{/students}" th:object="${student}" method="post">
+    Name: <input type="text" th:field="*{name}" />
+    Email: <input type="text" th:field="*{email}" />
+    Major: <input type="text" th:field="*{major}" />
+    <button type="submit">Add</button>
+</form>
+
+<hr>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Major</th>
+        <th>Action</th>
+    </tr>
+
+    <tr th:each="s : ${students}">
+        <td th:text="${s.id}"></td>
+        <td th:text="${s.name}"></td>
+        <td th:text="${s.email}"></td>
+        <td th:text="${s.major}"></td>
+        <td>
+            <a th:href="@{/students/delete/{id}(id=${s.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
