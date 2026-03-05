@@ -1,10 +1,11 @@
 package com.example.studentmanager.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
+
 import com.example.studentmanager.entity.Student;
 import com.example.studentmanager.repository.StudentRepository;
-
-import java.util.List;
 
 @Service
 public class StudentService {
@@ -26,4 +27,7 @@ public class StudentService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+    public Student getById(Long id) {
+    return repository.findById(id).orElseThrow();
+}
 }

@@ -39,4 +39,16 @@ public class StudentController {
         service.delete(id);
         return "redirect:/students";
     }
+
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable Long id, Model model) {
+        model.addAttribute("student", service.getById(id));
+        return "edit_student";
+    }
+
+    @PostMapping("/update")
+    public String update(@ModelAttribute Student student) {
+        service.save(student);
+        return "redirect:/students";
+    }
 }

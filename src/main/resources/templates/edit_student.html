@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Edit Student</title>
+</head>
+<body>
+
+<h2 class="title-main">Edit Student</h2>
+
+<form th:action="@{/students/update}" th:object="${student}" method="post">
+
+    <!-- Giữ ID ẩn để update -->
+    <input type="hidden" th:field="*{id}" />
+
+    <input type="text" th:field="*{name}" placeholder="Name" required />
+    <input type="text" th:field="*{email}" placeholder="Email" required />
+    <input type="text" th:field="*{major}" placeholder="Major" required />
+
+    <button type="submit" class="btn btn-add">Update</button>
+
+    <a th:href="@{/students}">
+        <button type="button" class="btn btn-delete">Cancel</button>
+    </a>
+
+</form>
+
+</body>
+</html>
